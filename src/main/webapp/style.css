@@ -3,3 +3,69 @@
   margin-right: auto;
   width: 650px;
 }
+
+body{
+  background-image: url("images/Main_page_background.jpg");
+  background-color: black;
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: cover;
+}
+
+/* Style input fields */
+label {
+	display: block;
+	padding-top: 15px;
+	padding-left: 15px;
+	font-size: 30px;
+}
+
+input[type=text] {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: blue;
+  font-size: 20px;
+  margin-left: 15px;
+  height: 2em;
+}
+
+input:focus {
+  border-color: green;
+}
+
+#btn-wrapper{
+    display: inline-block;
+	text-align:center;
+}
+
+input[type=submit]{
+	background-color: #1c1cba;
+	color:white;
+	font-size: 20px;
+	width:5em;  
+	height: 2em;
+}
+
+input[type=submit]:hover{
+	background-color: green;
+	cursor:pointer;
+}
+
+
+/* Vertically center inner-container */
+#form-container{
+	background-color: white;
+	height: 15vh;
+}
+
+#form-container::before{
+	content: " ";
+	display: inline-block;
+	vertical-align: middle;
+	height: 15vh;
+}
+
+#inner-container{
+	display: inline-block; 
+	vertical-align: middle;  
+}
