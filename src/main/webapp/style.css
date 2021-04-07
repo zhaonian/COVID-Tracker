@@ -4,20 +4,13 @@
   width: 650px;
 }
 
-body{
-  background-image: url("images/Main_page_background.jpg");
-  background-color: black;
-  background-repeat: no-repeat;
-  background-attachment: fixed; 
-  background-size: cover;
-}
-
 /* Style input fields */
 label {
 	display: block;
 	padding-top: 15px;
 	padding-left: 15px;
-	font-size: 30px;
+    font-size: 30px;
+    
 }
 
 input[type=text] {
@@ -54,9 +47,12 @@ input[type=submit]:hover{
 
 /* Vertically center inner-container */
 #form-container{
-	background-color: white;
-	height: 15vh;
+	background-color: lightgray;
+    border: 3px solid black;
+    margin: auto;
+
 }
+
 
 #form-container::before{
 	content: " ";
@@ -68,4 +64,40 @@ input[type=submit]:hover{
 #inner-container{
 	display: inline-block; 
 	vertical-align: middle;  
+}
+
+
+/* Animation and Background colors */
+.background {
+  animation:slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, darkgrey 50%, black
+    50%);
+  bottom:0;
+  left:-50%;
+  opacity:.5;
+  position:fixed;
+  right:-50%;
+  top:0;
+  z-index:-1;
+}
+.background2 {
+  animation-direction:alternate-reverse;
+  animation-duration:7s;
+}
+.background3 {
+  animation-duration:8s;
+}
+
+
+h1 {
+  font-family:monospace;
+}
+
+@keyframes slide {
+  0% {
+    transform:translateX(-25%);
+  }
+  100% {
+    transform:translateX(25%);
+  }
 }
