@@ -19,10 +19,8 @@ public class SearchBarServlet extends HttpServlet {
    
     String stateValue = Jsoup.clean(request.getParameter("location"),Whitelist.none()).toUpperCase();
     request.getSession().setAttribute("state", stateValue);
-
-    System.out.println(stateValue);
     
-    response.sendRedirect("/covidData");
+    response.sendRedirect("/vaccines.html");
   }
 
   
