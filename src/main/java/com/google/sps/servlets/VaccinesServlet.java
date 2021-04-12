@@ -11,6 +11,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 
 @WebServlet("/vaccines")
+
+/**  receives the string entered on searchbar, converts it to Json and sends it to the server*/
 public class VaccinesServlet extends HttpServlet {
 
     @Override
