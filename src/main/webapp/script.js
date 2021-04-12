@@ -1,4 +1,4 @@
-/**fetches coviddata from server and adds to DOM */
+/**fetches coviddata from api and adds to DOM */
 function loadData() {
   fetch('https://api.covidactnow.org/v2/states.json?apiKey=4ac37661a08a40b5a50cbe35eb941043').then(response => response.json()).then((data) => {
     const dataElement = document.getElementById('data-container');
@@ -23,7 +23,7 @@ async function getString() {
 
 }
 
-/**fetches coviddata from server to access vaccine info and adds to DOM */
+/**fetches coviddata from api to access vaccine info and adds to DOM */
 async function loadVaccineSearchBarData() {
   const state = await getString();
   fetch('https://api.covidactnow.org/v2/states.json?apiKey=4ac37661a08a40b5a50cbe35eb941043').then(response => response.json()).then((vaccine) => {
