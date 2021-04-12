@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 
+/** receives request from searchBar and add string entered to current session */
 @WebServlet("/searchbar")
 public class SearchBarServlet extends HttpServlet {
 
