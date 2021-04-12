@@ -10,8 +10,8 @@ import com.google.gson.Gson;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 
+/** receives a request and redirects user to data.html */
 @WebServlet("/covidData")
-
 public class CovidDataServlet extends HttpServlet {
 
     @Override
