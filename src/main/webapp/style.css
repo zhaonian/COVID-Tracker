@@ -4,9 +4,16 @@
   width: 650px;
 }
 #map {
-  border: thin solid blue;
-  height: 500px;
-  width: 500px;
+  border: thick solid rgba(87, 124, 247, 0.795);
+  height: 600px;
+  width: 600px;
+}
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+#map2 {
+  border: thick solid rgba(87, 124, 247, 0.795);
+  height: 600px;
+  width: 600px;
 }
 
 /* Style input fields */

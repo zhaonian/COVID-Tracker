@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAA3gcQcde3uu_XrTge4-8HNvmjH8gNCNs&libraries=visualization&callback=initMap">
+    </script>
+<head>
+  <title>nothin </title>
+</head>
+<body>
+<script src="heatmap.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script src="./index.js"></script>
+  </head>
+  <body onload="initMap();">
+      <h1>Heat Map</h1>
+      <p>Heat maps are ssential for tracking COVID-19 pandemic dynamics, preventing institute-based outbreaks, and may be instrumental for devising diagnostic and therapeutic strategies in the high-risk population.</p>
+
+    <div id="floating-panel">
+      <button onclick="toggleHeatmap()">Toggle Heatmap</button>
+      <button onclick="changeGradient()">Change gradient</button>
+      <button onclick="changeRadius()">Change radius</button>
+      <button onclick="changeOpacity()">Change opacity</button>
+    </div>
+    <div id="map2"></div>
+
+</body>
+</html>
