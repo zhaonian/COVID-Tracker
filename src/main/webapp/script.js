@@ -61,6 +61,7 @@ function createDataElement(data) {
 }
 
 
+
 /** Creates an element that represents a vaccinedata */
 function createVaccineElement(data) {
     
@@ -128,3 +129,4 @@ function createVaccineElement(data) {
 
     return vaccineDataTable;
 }
+
