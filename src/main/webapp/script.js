@@ -25,20 +25,27 @@ async function getString() {
 
 /**fetches coviddata from api to access vaccine info and adds to DOM */
 async function loadVaccineSearchBarData() {
-  const state = await getString();
+  const state = await getString();  
+  const appended = false;
   fetch('https://api.covidactnow.org/v2/states.json?apiKey=4ac37661a08a40b5a50cbe35eb941043').then(response => response.json()).then((vaccine) => {
     const vaccineElement = document.getElementById('vaccine-container');
     vaccine.forEach((ind_vaccine) => {
         if(state.localeCompare(ind_vaccine.state) == 0){
-        vaccineElement.appendChild(createVaccineElement(ind_vaccine));
-        var linebreak = document.createElement("br");
-        vaccineElement.appendChild(linebreak);
-  		vaccineElement.appendChild(linebreak);
-        
-     }
+            vaccineElement.appendChild(createVaccineElement(ind_vaccine));
+            var linebreak = document.createElement("br");
+            vaccineElement.appendChild(linebreak);
+            vaccineElement.appendChild(linebreak);
+            appended = true;
+        }
      })
-  });
+    const errorElement = document.createElement('span');
+    errorElement.innerText = "invalid input, enter state as abbreveations : See table below ";
+    vaccineElement.append(errorElement);
 
+    const img = document.createElement("img");
+    img.src = '/images/state abbreviation.jpeg' ;
+    vaccineElement.appendChild(img);
+  });
 }
 
 /** Creates an element that represents a coviddata */
@@ -124,7 +131,6 @@ function createVaccineElement(data) {
     adminRow.appendChild(admincell);
     tbody.append(adminRow);
     vaccineDataTable.appendChild(tbody);
-
 
     return vaccineDataTable;
 }
