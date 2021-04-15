@@ -25,20 +25,27 @@ async function getString() {
 
 /**fetches coviddata from api to access vaccine info and adds to DOM */
 async function loadVaccineSearchBarData() {
-  const state = await getString();
+  const state = await getString();  
+  const appended = false;
   fetch('https://api.covidactnow.org/v2/states.json?apiKey=4ac37661a08a40b5a50cbe35eb941043').then(response => response.json()).then((vaccine) => {
     const vaccineElement = document.getElementById('vaccine-container');
     vaccine.forEach((ind_vaccine) => {
         if(state.localeCompare(ind_vaccine.state) == 0){
-        vaccineElement.appendChild(createVaccineElement(ind_vaccine));
-        var linebreak = document.createElement("br");
-        vaccineElement.appendChild(linebreak);
-  		vaccineElement.appendChild(linebreak);
-        
-     }
+            vaccineElement.appendChild(createVaccineElement(ind_vaccine));
+            var linebreak = document.createElement("br");
+            vaccineElement.appendChild(linebreak);
+            vaccineElement.appendChild(linebreak);
+            appended = true;
+        }
      })
-  });
+    const errorElement = document.createElement('span');
+    errorElement.innerText = "invalid input, enter state as abbreveations : See table below ";
+    vaccineElement.append(errorElement);
 
+    const img = document.createElement("img");
+    img.src = '/images/state abbreviation.jpeg' ;
+    vaccineElement.appendChild(img);
+  });
 }
 
 /** Creates an element that represents a coviddata */
@@ -60,43 +67,72 @@ function createDataElement(data) {
     return covidDataElement;
 }
 
+
+
 /** Creates an element that represents a vaccinedata */
 function createVaccineElement(data) {
     
-    const vaccineDataElement = document.createElement('p');
-    vaccineDataElement.className = 'vaccineData';
+    const vaccineDataTable = document.getElementById("myTable");
+    vaccineDataTable.className = 'table table-responsive table-bordered';
+    var tbody = document.createElement("tbody");
     
+    const stateRow = document.createElement('tr');    
+    const statecell = document.createElement('td');
     
-    const stateElement = document.createElement('span');
-    stateElement.innerText = JSON.stringify(data.state);
+    const state = document.createElement('td');
+    state.innerHTML = " name of state ";
+    statecell.innerHTML = JSON.stringify(data.state);
+
+    stateRow.appendChild(state);
+    stateRow.appendChild(statecell);
+    tbody.append(stateRow);
+
+    const distRow = document.createElement('tr');    
+    const distcell = document.createElement('td');
     
-    const vaccinesElement = document.createElement('span');
-    vaccinesElement.innerText = " has " + JSON.stringify(data.actuals.vaccinesDistributed) + " vaccines distributed \n";
-
-    const vaccineInitElement = document.createElement('span');
-    vaccineInitElement.innerText = "has started" + JSON.stringify(data.actuals.vaccinationsInitiated) + " vaccines \n";
+    const dist = document.createElement('td');
+    dist.innerHTML = " Distributed vaccines ";
+    distcell.innerHTML = JSON.stringify(data.actuals.vaccinesDistributed);
     
-    const vaccineCompElement = document.createElement('span');
-    vaccineCompElement.innerText = "has completed" + JSON.stringify(data.actuals.vaccinationsCompleted) + " vaccines \n";
+    distRow.appendChild(dist);
+    distRow.appendChild(distcell);
+    tbody.append(distRow);
 
-    const vaccineAdminElement = document.createElement('span');
-    vaccineAdminElement.innerText = "has in total adminstered " + JSON.stringify(data.actuals.vaccinesAdministered) + " vaccines \n";
-    var linebreak = document.createElement("br");
-        
+    const initRow = document.createElement('tr');    
+    const initcell = document.createElement('td');
+    
+    const init = document.createElement('td');
+    init.innerHTML = " Vaccinations intitiated ";
+    initcell.innerHTML = JSON.stringify(data.actuals.vaccinationsInitiated);
+    
+    initRow.appendChild(init);
+    initRow.appendChild(initcell);
+    tbody.append(initRow);
 
-    vaccineDataElement.appendChild(stateElement);
-    vaccineDataElement.appendChild(vaccinesElement);
-    vaccineDataElement.appendChild(linebreak);
+    const compRow = document.createElement('tr');    
+    const compcell = document.createElement('td');
+    
+    const comp= document.createElement('td');
+    comp.innerHTML = " Vaccinations completed ";
+    compcell.innerHTML = JSON.stringify(data.actuals.vaccinationsCompleted);
+    
+    compRow.appendChild(comp);
+    compRow.appendChild(compcell);
+    tbody.append(compRow);
+    vaccineDataTable.appendChild(tbody);
 
-    vaccineDataElement.appendChild(vaccineInitElement);
-    vaccineDataElement.appendChild(linebreak);
+    const adminRow = document.createElement('tr');    
+    const admincell = document.createElement('td');
+    
+    const admin = document.createElement('td');
+    admin.innerHTML = " Total vaccines adminstered ";
+    admincell.innerHTML = JSON.stringify(data.actuals.vaccinesAdministered);
+    
+    adminRow.appendChild(admin);
+    adminRow.appendChild(admincell);
+    tbody.append(adminRow);
+    vaccineDataTable.appendChild(tbody);
 
-    vaccineDataElement.appendChild(vaccineCompElement);
-    vaccineDataElement.appendChild(linebreak);
-
-    vaccineDataElement.appendChild(vaccineAdminElement);
-    vaccineDataElement.appendChild(linebreak);
-
-    return vaccineDataElement;
+    return vaccineDataTable;
 }
 
