@@ -18,6 +18,7 @@ function createMap() {
     // }
 }
 
+
 /**fetches coviddata from api and adds to DOM */
 function loadData() {
   fetch('https://api.covidactnow.org/v2/states.json?apiKey=4ac37661a08a40b5a50cbe35eb941043').then(response => response.json()).then((data) => {
@@ -42,6 +43,14 @@ async function getString() {
     return state;
 
 }
+async function getMapString() {
+  const responseFromServer = await fetch('/teststationmap');
+  const stringFromResponse = await responseFromServer.json();
+  
+    const state = stringFromResponse[0].state;
+    return state;
+
+}
 
 /**fetches coviddata from api to access vaccine info and adds to DOM */
 async function loadVaccineSearchBarData() {
@@ -59,26 +68,26 @@ async function loadVaccineSearchBarData() {
             appended = true;
         }
      })
-     if(state.localeCompare('CHICAGO')== 0){
-        console.log(state);
-        const centerUS = { lat: 39.8283, lng: -98.5795 };
-        const map = new google.maps.Map(document.getElementById('map'),
-        {center: centerUS,
-        zoom: 10});
-        const uluru = { lat: 41.8807, lng: -87.6742 };
-        const marker = new google.maps.Marker({
-        position: uluru,
-        map: map,        
-    })
-     }
-     else{
+    //  if(state.localeCompare('CHICAGO')== 0){
+    //     console.log(state);
+    //     const centerUS = { lat: 39.8283, lng: -98.5795 };
+    //     const map = new google.maps.Map(document.getElementById('map'),
+    //     {center: centerUS,
+    //     zoom: 10});
+    //     const uluru = { lat: 41.8807, lng: -87.6742 };
+    //     const marker = new google.maps.Marker({
+    //     position: uluru,
+    //     map: map,        
+    // })
+    //  }
+    //  else{
         const errorElement = document.createElement('span');
         errorElement.innerText = "invalid input, enter state as abbreveations : See table below ";
         vaccineElement.append(errorElement);
         const img = document.createElement("img");
         img.src = '/images/state abbreviation.jpeg' ;
         vaccineElement.appendChild(img);
-     }
+     //}
         
    
   });
