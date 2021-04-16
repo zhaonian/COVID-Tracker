@@ -4,7 +4,7 @@
   width: 650px;
 }
 #map {
-  border: thick solid rgba(87, 124, 247, 0.795);
+  border: thick solid rgba(40, 41, 43, 0.959);
   height: 600px;
   width: 600px;
 }
@@ -39,6 +39,10 @@ input:focus {
 }
 
 #btn-wrapper{
+    display: inline-block;
+    text-align:center;
+}
+#btn-wrapper2{
     display: inline-block;
     text-align:center;
 }
