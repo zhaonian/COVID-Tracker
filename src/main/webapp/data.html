@@ -1,14 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
+      
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
     <meta charset="UTF-8">
-    <title>Data</title>
-<!--     <link rel="stylesheet" href="style.css"> -->
+    <title>Covid Tracker</title>
+    <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="script_chart.js"></script>
+  
+
+    <!--Setup for Navagation Bar-->
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Covid Tracker</a>
+      </div>
+        <ul class="nav navbar-nav">
+        <li class="active"><a href="index.html">Home</a></li>
+        <!-- Add other html pages to href here to take you to new page-->
+        <li><a href="teststation.html">Test Stations</a></li>
+        <li><a href="#">Heat Map</a></li>
+        <li><a href="vaccines.html">COVID Data</a></li>
+        <li><a href="#">Contacts</a></li>
+        </ul>
+               
+      </div>
+    </nav>
+    
   </head>
+  
   <body onload="loadData();">
     <div id="content">
-      <h1>Covid Tracker - Team 25</h1>
+    
+      <h1>Covid Cases Per State</h1>
 	<div id="data-container"></div>
 	</div>
     </div>

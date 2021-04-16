@@ -31,6 +31,8 @@
         <!-- Add other html pages to href here to take you to new page-->
         <li><a href="#">Test Stations</a></li>
         <li><a href="/heatMap">Heat Map</a></li>
+        <li><a href="teststation.html">Test Stations</a></li>
+        <li><a href="#">Heat Map</a></li>
         <li><a href="/covidData">COVID Data</a></li>
         <li><a href="/contacts">Contacts</a></li>
         </ul>       
@@ -50,13 +52,18 @@
       <div id="form-container">
         <div id="inner-container">
             <form action="/searchbar" method="POST">
-                <input type="text" id="location" name="location" size="47" placeholder="Search location">
+                <input type="text" id="location" name="location" size="47" placeholder="Search State: AK">
                 <div id="btn-wrapper">
                     <input type="submit" onclick="loadVaccineSearchBarData();" value="Submit">
                 </div>
             </form>
 	    </div>  
       </div>
+      <p style="color:whitesmoke;"> Developed by: </p>
+            <ol style="color:whitesmoke;">
+                <li>Tinotenda M Tazvitya, Tino</li>
+            </ol>
+      
     </div>
                 <body onload="createMap();" class="center" >
                     <div id="map" class="center" ></div>
